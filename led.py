@@ -12,7 +12,12 @@ FMT = "%-19s %4.4g %2d %4d %8s %4d %8s %4d %8s"
 FMT_HEADER = '%-20s %3s %2s %4s %8s %4s %8s %4s %8s'
 HEADER = FMT_HEADER % tuple('Name Vf If O3i O3r O5i O5r O9i O9a'.split())
 def fmt_led(name, vf, if_ma):
-    ri = [led.CalcResistance(3, vf, if_ma), led.CalcResistor(3, vf, if_ma), led.CalcResistance(5, vf, if_ma), led.CalcResistor(5, vf, if_ma), led.CalcResistance(9, vf, if_ma), led.CalcResistor(9, vf, if_ma)]
+    ri = [led.CalcResistance(3, vf, if_ma),
+          led.CalcResistor(3, vf, if_ma),
+          led.CalcResistance(5, vf, if_ma),
+          led.CalcResistor(5, vf, if_ma),
+          led.CalcResistance(9, vf, if_ma),
+          led.CalcResistor(9, vf, if_ma)]
     fmt_args = (name, vf, if_ma) + tuple(ri)
     return FMT % fmt_args
 Name                  Vf If  O3i      O3r  O5i      O5r  O9i      O9a

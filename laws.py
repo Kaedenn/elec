@@ -24,6 +24,25 @@ H = V s/A (Henrys = Volt-seconds per Ampere)
 
 Laws:
 V = I R (Ohm's Law)
-P = V I (Watt's Law)
+P = I V (Watt's Law)
 
 """
+
+def Ohms(v=None, i=None, r=None):
+    if v is None:
+        return i*r
+    if i is None:
+        return v/r
+    if r is None:
+        return v/i
+    return v == i*r
+
+def Watts(p=None, i=None, v=None):
+    if p is None:
+        return i*v
+    if i is None:
+        return p/v
+    if v is None:
+        return p/i
+    return p == i*v
+
