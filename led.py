@@ -46,6 +46,14 @@ Cold White           3.6 20  -30    1 Ohm   70   82 Ohm  270  330 Ohm
 def _add_common_led(color, vf, iv_ma):
     COMMON_LED_TYPES[color] = (float(vf), iv_ma)
 
+def _add_base_led(color, lambda_min, lambda_max, material):
+    t = {"Wavelength": (float(lambda_min), float(lambda_max)),
+         "Materials": material}
+    if color in BASE_LED_TYPES:
+        BASE_LED_TYPES[color].append(t)
+    else:
+        BASE_LED_TYPES[color] = [t]
+
 _add_common_led("IR 850-940nm", 1.2, 20)
 _add_common_led("IR 880nm", 1.7, 50)
 _add_common_led("IR 940nm", 1.5, 50)
@@ -66,14 +74,6 @@ _add_common_led("Blue High Intensity", 4.5, 20)
 _add_common_led("Super Blue", 3.6, 20)
 _add_common_led("Cold White", 3.6, 20)
 _add_common_led("White 450nm", 4, 20)
-
-def _add_base_led(color, lambda_min, lambda_max, material):
-    t = {"Wavelength": (float(lambda_min), float(lambda_max)),
-         "Materials": material}
-    if color in BASE_LED_TYPES:
-        BASE_LED_TYPES[color].append(t)
-    else:
-        BASE_LED_TYPES[color] = [t]
 
 _add_base_led("IR", 760, float("inf"), ("GaAs", "AlGaAs"))
 _add_base_led("Red", 610, 760, ("AlGaAs", "GaAsP", "AlGaInP", "GaP"))
